@@ -1,0 +1,46 @@
+﻿@page "/studens"
+
+<h1>Студенты ыыыы:)</h1>
+
+<button class="btn btn-primary" @onclick="FillStudents">Вывод_студентов</button>
+@if (students == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Имя</th>
+                <th>Фамилия</th>
+                <th>Группа</th>
+                <th>Факультет</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var Student123 in students)
+            {
+                <tr>
+                    <td>@Student123.name</td>
+                    <td>@Student123.surname</td>
+                    <td>@Student123.group</td>
+                    <td>@Student123.faculty</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+@code {
+    private Student123[] students;
+
+    private void FillStudents()
+    {
+        students = new Student123[3]
+        {
+            new Student123("Саня","Краснов",5,"Факультет_Rise_of_Kindoms"),
+            new Student123("Владос","Рыбаков",4,"Факультет_Дотера"),
+            new Student123("Филипп","Баннов",3,"Факультет_Программиста")
+        };
+    }
+}
