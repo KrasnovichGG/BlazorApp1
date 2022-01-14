@@ -1,8 +1,65 @@
 ﻿@page "/studens"
 
 <h1>Студенты ыыыы:)</h1>
-
-<button class="btn btn-primary" @onclick="FillStudents">Вывод_студентов</button>
+<button class="btn btn-primary" @onclick="FillStudents1">Вывести студентов 2 порядка</button>
+@if (students1 == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Имя</th>
+                <th>Фамилия</th>
+                <th>Группа</th>
+                <th>Факультет</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var Student123 in students1)
+            {
+                <tr>
+                    <td>@Student123.name</td>
+                    <td>@Student123.surname</td>
+                    <td>@Student123.group</td>
+                    <td>@Student123.faculty</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+<button class="btn btn-primary" @onclick="FillStudents2">Вывести студентов 3 порядка</button>
+@if (students2 == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Имя</th>
+                <th>Фамилия</th>
+                <th>Группа</th>
+                <th>Факультет</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var Student123 in students2)
+            {
+                <tr>
+                    <td>@Student123.name</td>
+                    <td>@Student123.surname</td>
+                    <td>@Student123.group</td>
+                    <td>@Student123.faculty</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+<button class="btn btn-primary" @onclick="FillStudents">Вывести студентов 1 порядка</button>
 @if (students == null)
 {
     <p><em>Loading...</em></p>
@@ -33,6 +90,8 @@ else
 }
 @code {
     private Student123[] students;
+    private Student123[] students1;
+    private Student123[] students2;
 
     private void FillStudents()
     {
@@ -41,6 +100,26 @@ else
             new Student123("Саня","Краснов",5,"Факультет_Rise_of_Kindoms"),
             new Student123("Владос","Рыбаков",4,"Факультет_Дотера"),
             new Student123("Филипп","Баннов",3,"Факультет_Программиста")
-        };
+                };
+
+    }
+    private void FillStudents1()
+    {
+        students1 = new Student123[5]
+       {
+            new Student123("Саня","Краснов",5,"Факультет_Rise_of_Kindoms"),
+            new Student123("Владос","Рыбаков",4,"Факультет_Дотера"),
+            new Student123("Филипп","Баннов",3,"Факультет_Программиста"),
+            new Student123("Ильсаф","Гарифуллин",3,"Факультет_Программиста"),
+            new Student123("Булат","Шакиров",4,"Факультет_Дотера")
+               };
+    }
+    private void FillStudents2()
+    {
+        students2 = new Student123[2]
+        {
+            new Student123("Артур","Пирожков",1,"Факультет_Чилла"),
+            new Student123("Алишер","НаБите",4,"Факультет_Дотера")
+                };
     }
 }
