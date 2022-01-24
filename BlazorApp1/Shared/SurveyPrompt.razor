@@ -1,4 +1,5 @@
-﻿<div class="alert alert-secondary mt-4" role="alert">
+﻿@using BlazorApp1.Data
+<div class="alert alert-secondary mt-4" role="alert">
     <span class="oi oi-pencil mr-2" aria-hidden="true"></span>
     <strong>@Title</strong>
 
@@ -8,9 +9,28 @@
     </span>
     and tell us what you think.
 </div>
+<div class="col col-md-3">
+    <input name="text123" @bind="@name" id="Text1" type="text" class="text-body form-control my-4" placeholder="Имя" />
+    <input name="text123" @bind="@surname" id="Text1" type="text" class="text-body form-control my-4" placeholder="Фамилия" />
+    <input name="text123" @bind="@facultet" id="Text1" type="text" class="text-body form-control my-4" placeholder="Факультет" />
+    <input name="text123" @bind="@group" id="Text1" type="text" class="text-body form-control my-4" placeholder="Группа" />
+    <button class="btn btn-primary" @onclick="@OnClick">Add</button>
+</div>
 
 @code {
-    // Demonstrates how a parent component can supply parameters
-    [Parameter]
+   [Parameter]
     public string Title { get; set; }
+    private Student123 student;
+    private string name;
+    private string surname;
+    private string facultet;
+    private int group;
+
+    public void OnClick()
+    {
+        student = new Student123(name, surname, group, facultet);
+        StudentExtansion.Add(student);
+    }
+
+
 }
